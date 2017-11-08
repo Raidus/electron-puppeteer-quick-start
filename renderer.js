@@ -9,7 +9,12 @@ const app = require('electron').remote.app,
   puppeteer = require('puppeteer');
 
 async function getPic(url) {
-  const browser = await puppeteer.launch({ headless: false, slowMo: 250 });
+  const browser = await puppeteer.launch({
+    headless: false,
+    slowMo: 250,
+    executablePath:
+      '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'
+  });
   const page = await browser.newPage();
   await page.goto(url);
   await page.setViewport({ width: 1200, height: 800 });
